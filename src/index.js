@@ -16,7 +16,7 @@ const App = () => {
         :
         <div>
           <p>No has iniciado sesion</p>
-          <FormularioInicioSesion />
+          <FormularioInicioSesion cambiarEstadoSesion={cambiarEstadoSesion} />
         </div>
       }
     </>

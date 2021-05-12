@@ -1,21 +1,31 @@
 import React, { useState } from 'react';
 
-const FormularioInicioSesion = () => {
+const FormularioInicioSesion = (props) => {
     const [usuario, cambiarUsuario] = useState('');
     const [password, cambiarPassword] = useState('');
 
-    const onChangeUsuario = (event) => {
-        cambiarUsuario(event.target.value);
+    const onChange = (event) => {
+        if(event.target.name === 'usuario'){
+            cambiarUsuario(event.target.value);
+        } else if(event.target.name === 'password'){
+            cambiarPassword(event.target.value);
+        }
     }
 
-    const onChangePassword = (event) => {
-        cambiarPassword(event.target.value);
+    const onSubmit = (event) => {
+        event.preventDefault();
+
+        if(usuario === 'esdras' && password === '123'){
+            props.cambiarEstadoSesion(true);
+        } else {
+            alert('datos incorrcetos');
+            cambiarUsuario('');
+            cambiarPassword('');
+        }
     }
 
     return (
-        <form action="">
-            <p>Usuario: {usuario} </p>
-            <p>Contraseña: {password} </p>
+        <form action="" onSubmit={onSubmit}>
             <div>
                 <label htmlFor="usuario">Usuario</label>
                 <input
@@ -23,7 +33,7 @@ const FormularioInicioSesion = () => {
                     name="usuario"
                     id="usuario"
                     value={usuario}
-                    onChange={onChangeUsuario}
+                    onChange={onChange}
                 />
             </div>
             <div>
@@ -33,7 +43,7 @@ const FormularioInicioSesion = () => {
                     name="password"
                     id="password"
                     value={password}
-                    onChange={onChangePassword}
+                    onChange={onChange}
                 />
             </div>
             <button type="submit">Iniciar Sesion</button>
