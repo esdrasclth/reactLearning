@@ -1,5 +1,6 @@
 import React from 'react';
 import {Titulo} from './Titulo'
+import styled from 'styled-components'
 
 const Usuario = () => {
     const pais = "Honduras";
@@ -9,7 +10,7 @@ const Usuario = () => {
         <div>
             <Titulo />
             <Titulo nombre="Cesar" color="red" />
-            <p>Tu lista de amigos es:</p>
+            <Parrafo>Tu lista de amigos es:</Parrafo>
             {pais && <p>Tu eres de: {pais}</p>}
             <ul>
                 {amigos.map((amigo, index) => <li key={index}>{amigo}</li>)}
@@ -18,5 +19,9 @@ const Usuario = () => {
         </div>
     );
 }
+
+const Parrafo = styled.p`
+    margin: 20px 0;
+`;
 
 export default Usuario;
