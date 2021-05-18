@@ -15,7 +15,7 @@ const Usuario = () => {
             <ul>
                 {amigos.map((amigo, index) => <li key={index}>{amigo}</li>)}
             </ul>
-            <p>Que tengas un buen dia, bye!</p>
+            <Parrafo>Que tengas un buen dia, bye!</Parrafo>
         </div>
     );
 }
